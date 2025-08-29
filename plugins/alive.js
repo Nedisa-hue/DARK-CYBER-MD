@@ -1,51 +1,79 @@
 const { cmd, commands } = require('../command');
 const os = require("os");
-const { runtime } = require('../lib/functions'); // Make sure this path is correct and the function is exported
+const { runtime } = require('../lib/functions');
 
 cmd({
     pattern: "alive",
-    alias: ["status", "uptime"],
+    alias: ["status", "runtime", "uptime"],
     desc: "Check uptime and system status",
     category: "main",
-    react: "👋",
+    react: "👨🏼‍💻",
     filename: __filename
-},
-async (conn, mek, m, { from, quoted, body, isCmd, command, args, q, isGroup, sender, senderNumber, botNumber2, botNumber, pushname, isMe, isOwner, groupMetadata, groupName, participants, groupAdmins, isBotAdmins, isAdmins, reply }) => {
+}, async (conn, mek, m, { from }) => {
     try {
-        // Ensure 'pushname' is correctly populated from your bot's framework.
-        // If 'pushname' is sometimes undefined, you might want to provide a fallback, e.g., 'mek.pushName || "User"'.
-        const userPushName = pushname || "මිත්‍රයා"; // Fallback if pushname is not available
-
         // Generate system status message
-        const status = `> *👋 HELLO..${userPushName}, HASHAN-MD IS ALIVE NOW !! 🧸*
+        const status = `*╭━━〔* *DARK-CYBER-MD* *〕━━┈⊷*
+┃◈ *╭─────────────·๏*
+┃◈┃• *⏳ Uptime*:  ${runtime(process.uptime())} 
+┃◈┃• *📟 Ram usage*: ${(process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2)}MB / ${(os.totalmem() / 1024 / 1024).toFixed(2)}MB
+┃◈┃• *⚙️ HostName*: ${os.hostname()}
+┃◈┃• *👨‍💻 Owner*: Mr Hashiya
+┃◈┃• *🧬 Version*: V1
+┃◈ *└───────────┈⊷*
+*╰──────────────┈⊷*
 
-*ʜᴇʟʟᴏ 👋 , IM  HASHAN-MD !! HOW CAN I HELP YOU TODAY 😊*
+1 || BOT SPEED
+2 || BOT MENU
 
-> *💤 ᴠᴇʀsɪᴏɴ  :* 0.0.1 ᴠ 
-> *✨ ʜᴏsᴛ    :* ${os.hostname()}
-> *⏰ ᴜᴘᴛɪᴍᴇ  :* ${runtime(process.uptime())}
-> *📶 ᴍᴇᴍᴏʀʏ   :* ${(process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2)}MB / ${(os.totalmem() / 1024 / 1024).toFixed(2)}MB
-
-> *© POWERED BY HASHAN-MD 🤍*`;
-
-        // Send the status message with an image
-        await conn.sendMessage(from, { 
-            image: { url: `https://res.cloudinary.com/df2rnoijw/image/upload/v1752404824/shkqo3nbxkhhbyej2lxm.jpg` },  // Ensure this URL is always accessible
-            caption: status,
-            contextInfo: {
-                mentionedJid: [m.sender], // Ensure m.sender is always a valid JID
-                forwardingScore: 999,
-                isForwarded: true,
-                forwardedNewsletterMessageInfo: {
-                    newsletterJid: '120363395674230271@newsletter', // This JID needs to be valid and accessible
-                    newsletterName: 'HASHAN-MD-V1',
-                    serverMessageId: 143
-                }
-            }
+> ©POWERD BY HASHIYA BOY`;
+const sentMsg = await conn.sendMessage(from, {
+            image: { url: imageUrl },
+            caption: selectionMessage,
+            contextInfo: { forwardingScore: 999, isForwarded: true },
         }, { quoted: mek });
 
+        // Send the selection message
+        // const sentMessage = await conn.sendMessage(from, {
+        //     text: selectionMessage,
+        // }, { quoted: mek });
+
+        // Wait for the user's response
+        conn.ev.on('messages.upsert', async (msgUpdate) => {
+            const msg = msgUpdate.messages[0];
+            if (!msg.message || !msg.message.extendedTextMessage) return;
+
+            const userResponse = msg.message.extendedTextMessage.text.trim();
+            if (msg.message.extendedTextMessage.contextInfo && msg.message.extendedTextMessage.contextInfo.stanzaId === sentMsg.key.id) {
+                let responseText;
+
+                // Command templates
+                switch (userResponse) {
+                    case '1': // BOT SPEED
+                        responseText = `
+*.PING*
+*CHEKING SPEED ⚡*
+
+> ©POWERED BY DARK-CYBER-MD`;
+                        break;
+                    case '2': // BOT MENU
+                        responseText = `
+
+*.MENU* 
+*PLEASE WAIT...*
+
+> ©POWERD BY DARK-CYBER-MD`;
+                         break;
+                    default:
+                        responseText = "*❌ Invalid option. Please enter a valid number (1-2)*";
+                }
+
+                // තෝරාගත් මෙනුව WhatsApp chat එකට යවයි.
+                await conn.sendMessage(from, { text: responseText }, { quoted: mek });
+            }
+        });
+
     } catch (e) {
-        console.error("Error in alive command:", e);
-        reply(`An error occurred: ${e.message}`);
+        console.error(e);
+        reply(`*⚠ An error occurred: ${e.message}*`);
     }
 });
