@@ -7,73 +7,49 @@ cmd({
     alias: ["status", "runtime", "uptime"],
     desc: "Check uptime and system status",
     category: "main",
-    react: "👨🏼‍💻",
+    react: "👋",
     filename: __filename
-}, async (conn, mek, m, { from }) => {
+},
+async (conn, mek, m, { from, quoted, body, isCmd, command, args, q, isGroup, sender, senderNumber, botNumber2, botNumber, pushname, isMe, isOwner, groupMetadata, groupName, participants, groupAdmins, isBotAdmins, isAdmins, reply }) => {
     try {
         // Generate system status message
-        const status = `*╭━━〔* *DARK-CYBER-MD* *〕━━┈⊷*
-┃◈ *╭─────────────·๏*
-┃◈┃• *⏳ Uptime*:  ${runtime(process.uptime())} 
-┃◈┃• *📟 Ram usage*: ${(process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2)}MB / ${(os.totalmem() / 1024 / 1024).toFixed(2)}MB
-┃◈┃• *⚙️ HostName*: ${os.hostname()}
-┃◈┃• *👨‍💻 Owner*: Mr Hashiya
-┃◈┃• *🧬 Version*: V1
-┃◈ *└───────────┈⊷*
-*╰──────────────┈⊷*
+        const status = `          
+╭━━〔 *DARK-CYBER-MD* 〕━━┈⊷
+┃◈╭─────────────·๏
+┃◈┃• *👋Hi*: ${pushname}
+┃◈┃• *⏳Uptime*:  ${runtime(process.uptime())} 
+┃◈┃• *📟 Ram*: ${(process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2)}MB / ${(os.totalmem() / 1024 / 1024).toFixed(2)}MB
+┃◈┃• *👨‍💻 Owner*: Hashiya Tech </>
+┃◈└───────────┈⊷
+╰──────────────┈⊷
 
-1 || BOT SPEED
-2 || BOT MENU
+  *DARK-CYBER-MD Multidevice Whatsapp Bot Make By Hashiya Tech*
 
-> ©POWERD BY HASHIYA BOY`;
-const sentMsg = await conn.sendMessage(from, {
-            image: { url: imageUrl },
-            caption: selectionMessage,
-            contextInfo: { forwardingScore: 999, isForwarded: true },
+     ⭕ FOLLOW 𝗢𝗨𝗥 𝗪𝗛𝗔𝗧𝗦𝗔𝗣𝗣 𝗖𝗛𝗔𝗡𝗡𝗘𝗟
+     
+ _https://whatsapp.com/channel/0029VazhnLzK0IBdwXG4152o_
+
+  
+> *POWERED BY DARK-CYBER-MD 📌️`;
+
+
+        await conn.sendMessage(from, { 
+            image: { url: `https://i.ibb.co/dYsHR6j/619.jpg` },  // Image URL
+            caption: status,
+            contextInfo: {
+                mentionedJid: [m.sender],
+                forwardingScore: 999,
+                isForwarded: true,
+                forwardedNewsletterMessageInfo: {
+                    newsletterJid: '120363395674230271@newsletter',
+                    newsletterName: 'DARK-CYBER-MD',
+                    serverMessageId: 190
+                }
+            }
         }, { quoted: mek });
 
-        // Send the selection message
-        // const sentMessage = await conn.sendMessage(from, {
-        //     text: selectionMessage,
-        // }, { quoted: mek });
-
-        // Wait for the user's response
-        conn.ev.on('messages.upsert', async (msgUpdate) => {
-            const msg = msgUpdate.messages[0];
-            if (!msg.message || !msg.message.extendedTextMessage) return;
-
-            const userResponse = msg.message.extendedTextMessage.text.trim();
-            if (msg.message.extendedTextMessage.contextInfo && msg.message.extendedTextMessage.contextInfo.stanzaId === sentMsg.key.id) {
-                let responseText;
-
-                // Command templates
-                switch (userResponse) {
-                    case '1': // BOT SPEED
-                        responseText = `
-*.PING*
-*CHEKING SPEED ⚡*
-
-> ©POWERED BY DARK-CYBER-MD`;
-                        break;
-                    case '2': // BOT MENU
-                        responseText = `
-
-*.MENU* 
-*PLEASE WAIT...*
-
-> ©POWERD BY DARK-CYBER-MD`;
-                         break;
-                    default:
-                        responseText = "*❌ Invalid option. Please enter a valid number (1-2)*";
-                }
-
-                // තෝරාගත් මෙනුව WhatsApp chat එකට යවයි.
-                await conn.sendMessage(from, { text: responseText }, { quoted: mek });
-            }
-        });
-
     } catch (e) {
-        console.error(e);
-        reply(`*⚠ An error occurred: ${e.message}*`);
+        console.error("Error in alive command:", e);
+        reply(`An error occurred: ${e.message}`);
     }
 });

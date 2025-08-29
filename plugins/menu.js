@@ -35,11 +35,11 @@ menu[commands[i].category] += `.${commands[i].pattern}\n`;
 let madeMenu = `
 👋 𝐇𝐄𝐋𝐋𝐎, ${pushname}!
 
-✨ 𝗪ELCOME TO DARK-CYBER-MD ✨ 
+*✨ 𝗪ELCOME TO DARK-CYBER-MD ✨*
 ╭─「 ᴄᴏᴍᴍᴀɴᴅꜱ ᴘᴀɴᴇʟ」
-│◈ яυηтιмє * ${runtime(process.uptime())}
-│◈ σωηєя ηαмє * Hashiya tech </>
-│◈ σωηєя ηυмвєя * 94715865463
+│◈ *яυηтιмє* : ${runtime(process.uptime())}
+│◈ *σωηєя ηαмє* : Hashiya tech </>
+│◈ *σωηєя ηυмвєя* : 94715865463
 ╰──────────●●►
 ╭──────────●●►
  📥 *𝐃𝐨𝐰𝐧𝐥𝐨𝐚𝐝 𝐌𝐞𝐧𝐮*
@@ -94,7 +94,7 @@ let madeMenu = `
 
 > *© POWERED BY DARK-CYBER-MD*`
 
-return await conn.sendMessage(from,{image: {url: `https://i.ibb.co/Kjq97rcG/3575.jpg`},caption:madeMenu},{quoted: mek})
+return await conn.sendMessage(from,{image: {url: `https://i.ibb.co/dYsHR6j/619.jpg`},caption:madeMenu},{quoted: mek})
 }catch(e){
 console.log(e)
 reply(`𝔼𝕣𝕣𝕠𝕣`)
