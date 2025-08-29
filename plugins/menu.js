@@ -3,44 +3,6 @@ const {cmd , commands} = require('../command')
 const os = require("os")
 const { getBuffer, getGroupAdmins, getRandom, h2k, isUrl, Json, runtime, sleep, fetchJson} = require('../lib/functions')
 cmd({
-    pattern: "alive2",
-    desc: "Check bot online or no.",
-    category: "main",
-    filename: __filename
-},
-async(conn, mek, m,{from, quoted, body, isCmd, command, args, q, isGroup, sender, senderNumber, botNumber2, botNumber, pushname, isMe, isOwner, groupMetadata, groupName, participants, groupAdmins, isBotAdmins, isAdmins, reply}) => {
-try{
-return await conn.sendMessage(from,{image: {url: config.ALIVE_IMG},caption: config.ALIVE_MSG},{quoted: mek})
-}catch(e){
-console.log(e)
-reply(`${e}`)
-}
-})
-
-//============ping=======
-cmd({
-    pattern: "ping3",
-    react: "⚡",
-    alias: ["speed"],
-    desc: "Check bot\'s ping",
-    category: "main",
-    use: '.ping3',
-    filename: __filename
-},
-async(conn, mek, m,{from, quoted, body, isCmd, command, args, q, isGroup, sender, senderNumber, botNumber2, botNumber, pushname, isMe, isOwner, groupMetadata, groupName, participants, groupAdmins, isBotAdmins, isAdmins, reply}) => {
-try{
-var inital = new Date().getTime();
-let ping = await conn.sendMessage(from , { text: '```Pinging... 📟```'  }, { quoted: mek } )
-var final = new Date().getTime();
-return await conn.edit(ping, '*Pong*\n *' + (final - inital) + ' ms* ' )
-} catch (e) {
-reply(`${e}`)
-console.log(e)
-}
-})
-
-//===========menu========
-cmd({
     pattern: "menu",
     desc: "To get the menu.",
     react: "📜",
@@ -51,7 +13,7 @@ async(conn, mek, m,{from, quoted, body, isCmd, command, args, q, isGroup, sender
 try{
     
 let menu = {
-main: 'alive',
+main: '',
 download: '',
 group: '',
 owner: '',
