@@ -1,12 +1,4 @@
-
-//_____ _    _ _      _    __  __ ____  
- // / ____| |  | | |    / \  |  \/  |  _ \ 
- //| (___ | |  | | |   / _ \ | |\/| | | | |
- // \___ \| |  | | |  / ___ \| |  | | |_| |
- // ____) | |__| | |_/ /   \ \_|  |_|____/ 
- //|_____/ \____/|_____/     \_\          
- 
-//             S U L A - M D
+//             N E D I Y A - M D
 
 import express from 'express';
 import fs from 'fs';
@@ -79,14 +71,14 @@ router.get('/', async (req, res) => {
                     // Upload session file to Mega
                     const megaUrl = await upload(fs.createReadStream(`${dirs}/creds.json`), `${generateRandomId()}.json`);
                     let stringSession = megaUrl.replace('https://mega.nz/file/', ''); // Extract session ID from URL
-                    stringSession = 'HASHAN-𝐌𝐃=' + stringSession;  // Prepend your name to the session ID
+                    stringSession = 'NEDIYA MINI-𝐌𝐃=' + stringSession;  // Prepend your name to the session ID
 
                     // Send the session ID to the target number
                     const userJid = jidNormalizedUser(num + '@s.whatsapp.net');
                     await SUPUNMDInc.sendMessage(userJid, { text: stringSession });
 
                     // Send confirmation message
-                    await SUPUNMDInc.sendMessage(userJid, { text: "HASHAN-MD  𝐒𝐄𝐒𝐒𝐈𝐎𝐍 𝐒𝐔𝐂𝐂𝐄𝐒𝐅𝐔𝐋𝐋👇*\n\n*⭕ WHATSAPP CHANNEL :*\n\n> https://whatsapp.com/channel/0029VazhnLzK0IBdwXG4152o\n\n*⭕Contact Owner :*\n\n> wa.me/94706042889\n\n\n🚫 *𝗗𝗢𝗡𝗧 𝗦𝗛𝗔𝗥𝗘 𝗬𝗢𝗨𝗥 𝗦𝗘𝗦𝗦𝗜𝗢𝗡 𝗜𝗗* 🚫" });
+                    await SUPUNMDInc.sendMessage(userJid, { text: "NEDIYA MINI-MD  𝐒𝐄𝐒𝐒𝐈𝐎𝐍 𝐒𝐔𝐂𝐂𝐄𝐒𝐅𝐔𝐋𝐋👇*\n\n*⭕ WHATSAPP CHANNEL :*\n\n> https://whatsapp.com/channel/0029VazhnLzK0IBdwXG4152o\n\n*⭕Contact Owner :*\n\n> wa.me/94706042889\n\n\n🚫 *𝗗𝗢𝗡𝗧 𝗦𝗛𝗔𝗥𝗘 𝗬𝗢𝗨𝗥 𝗦𝗘𝗦𝗦𝗜𝗢𝗡 𝗜𝗗* 🚫" });
                     
                     // Clean up session after use
                     await delay(100);
