@@ -19,7 +19,7 @@ const axios = require('axios')
 const { File } = require('megajs')
 const prefix = '.'
 
-const ownerNumber = ['94715865463']
+const ownerNumber = ['94761207139']
 
 //===================SESSION-AUTH============================
 if (!fs.existsSync(__dirname + '/auth_info_baileys/creds.json')) {
@@ -69,9 +69,9 @@ require("./plugins/" + plugin);
 console.log('Plugins installed successful ✅')
 console.log('Bot connected to whatsapp ✅')
 
-let up = `*✅ DARK-CYBER-MD Bot Successfully Installed !*
+let up = `*✅ NEDIYA-MINI-MD Bot Successfully Installed !*
 
-🔮 DARK-CYBER-MD is built to revolutionize your WhatsApp experience smarter, faster, and more powerful.
+🔮 NEDIYA-MINI-MD is built to revolutionize your WhatsApp experience smarter, faster, and more powerful.
 
 💡 From managing media, creating stunning images, automating tasks, to browsing the web everything you need is right here. Unlock a whole new world of features!
 
@@ -79,15 +79,14 @@ let up = `*✅ DARK-CYBER-MD Bot Successfully Installed !*
 
 > *🧑🏻‍💻 𝗗𝗘𝗩𝗘𝗟𝗢𝗣𝗘𝗥𝗦 :*
 
-MAIN OWNER | HASHIYA TECH  
+MAIN OWNER | NEDIYA TECH  
 
 > *🛡️ 𝗙𝗢𝗟𝗟𝗢𝗪 𝗪𝗛𝗔𝗧𝗦𝗔𝗣𝗣 𝗖𝗛𝗔𝗡𝗡𝗘𝗟 :*
 
-https://whatsapp.com/channel/0029VazhnLzK0IBdwXG4152o
+https://whatsapp.com/channel/0029Vb2l7408vd1GSo8n3a19
+> *©️  𝗣𝗢𝗪𝗘𝗥𝗘𝗗 𝗕𝗬 NEDIYA-MD*`;
 
-> *©️  𝗣𝗢𝗪𝗘𝗥𝗘𝗗 𝗕𝗬 DARK-CYBER-MD*`;
-
-conn.sendMessage(ownerNumber + "@s.whatsapp.net", { image: { url: `https://files.catbox.moe/sn20tl.jpg` }, caption: up })
+conn.sendMessage(ownerNumber + "@s.whatsapp.net", { image: { url: `https://files.catbox.moe/9xmoiz.png` }, caption: up })
 
 }
 })
