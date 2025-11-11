@@ -1,12 +1,6 @@
-
-//_____ _    _ _      _    __  __ ____  
- // / ____| |  | | |    / \  |  \/  |  _ \ 
- //| (___ | |  | | |   / _ \ | |\/| | | | |
- // \___ \| |  | | |  / ___ \| |  | | |_| |
- // ____) | |__| | |_/ /   \ \_|  |_|____/ 
- //|_____/ \____/|_____/     \_\          
+          
  
-//             S U L A - M D
+//             N E D I Y A - M D
 
 import express from 'express';
 import bodyParser from 'body-parser';
@@ -40,7 +34,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.listen(PORT, () => {
-    console.log(`𝐏𝙾𝚆𝙴𝚁𝙳 𝐁𝚈 HASHAN-𝐌𝙳\n\nServer running on http://localhost:${PORT}`);
+    console.log(`𝐏𝙾𝚆𝙴𝚁𝙳 𝐁𝚈 NEDIYA MINI-𝐌𝙳\n\nServer running on http://localhost:${PORT}`);
 });
 
 export default app;
