@@ -1,19 +1,11 @@
-
-//_____ _    _ _      _    __  __ ____  
- // / ____| |  | | |    / \  |  \/  |  _ \ 
- //| (___ | |  | | |   / _ \ | |\/| | | | |
- // \___ \| |  | | |  / ___ \| |  | | |_| |
- // ____) | |__| | |_/ /   \ \_|  |_|____/ 
- //|_____/ \____/|_____/     \_\          
- 
-//             S U L A - M D
+//             N E D I Y A - M D
 
 import * as mega from 'megajs';
 
 // Mega authentication credentials
 const auth = {
-    email: 'Hashiboy2010@gmail.com', // Replace with your Mega email
-    password: 'Hsshss2024', // Replace with your Mega password
+    email: 'Nediyaboy2010.com', // Replace with your Mega email
+    password: 'nediyaboy2010', // Replace with your Mega password
     userAgent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/42.0.2311.135 Safari/537.36 Edge/12.246'
 };
 
